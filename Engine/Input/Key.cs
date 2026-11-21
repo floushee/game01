@@ -1,3 +1,14 @@
 namespace Engine.Input;
 
-public enum Key { R, D, Right, A, Left, S, Down, W, Up }
+public enum Key { 
+    A,
+    S,
+    D,
+    W,
+    R,
+    Left, 
+    Right, 
+    Up, 
+    Down, 
+    Space 
+}

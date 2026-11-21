@@ -8,10 +8,6 @@ namespace Game;
 
 public sealed class GameHost : IDisposable
 {
-    private const int ScreenWidth = 800;
-
-    private const int ScreenHeight = 450;
-
     private const int TargetFps = 60;
 
     private const string GameTitle = "Game 01";
@@ -31,10 +27,10 @@ public sealed class GameHost : IDisposable
     public GameHost(IEngine engine)
     {
         this.engine = engine;
-        state = new GameState(ScreenWidth, ScreenHeight);
+        state = new GameState();
         renderer = new GameRenderer(engine.Renderer);
         input = new GameInputMapper(engine.Input);
-        platform = new Platform(engine, ScreenWidth, ScreenHeight, TargetFps, GameTitle);
+        platform = new Platform(engine, TargetFps, GameTitle);
         try
         {
             resources = new GameResources(engine);

@@ -23,6 +23,7 @@ internal sealed class RaylibInput : IInput
         Key.Down => KeyboardKey.Down,
         Key.W => KeyboardKey.W,
         Key.Up => KeyboardKey.Up,
+        Key.Space => KeyboardKey.Space,
         _ => throw new ArgumentOutOfRangeException(nameof(key))
     };
 

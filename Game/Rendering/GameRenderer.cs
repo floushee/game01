@@ -10,6 +10,8 @@ sealed class GameRenderer(IRenderer renderer)
     {
         renderer.BeginDrawing();
         renderer.ClearBackground(Color.Black);
+
+        DrawGround();
         DrawPlayer(state.Player);
         DrawEnemy(state.Enemy);
         foreach (Projectile projectile in state.Projectiles) DrawProjectile(projectile);
@@ -28,4 +30,7 @@ sealed class GameRenderer(IRenderer renderer)
 
     private void DrawProjectile(Projectile projectile) =>
         renderer.DrawCircleV(projectile.Position, Projectile.Radius, Color.Blue);
+
+    private void DrawGround() =>
+        renderer.DrawRectangle(0, Constants.GroundY, Constants.ScreenWidth, Constants.GroundHeight, new Color(45, 50, 60));
 }

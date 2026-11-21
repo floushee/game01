@@ -10,12 +10,12 @@ sealed class Platform : IDisposable
 
     private bool audioOpen;
 
-    public Platform(IEngine engine, int width, int height, int targetFps, string title)
+    public Platform(IEngine engine, int targetFps, string title)
     {
         this.engine = engine;
         try
         {
-            engine.Window.InitWindow(width, height, title);
+            engine.Window.InitWindow(Constants.ScreenWidth, Constants.ScreenHeight, title);
             windowOpen = true;
             engine.Window.SetTargetFPS(targetFps);
             engine.Window.HideCursor();

@@ -6,19 +6,9 @@ namespace Game.Gameplay;
 
 sealed class GameState
 {
-    private readonly int screenWidth;
-
-    private readonly int screenHeight;
-
-    public GameState(int screenWidth, int screenHeight)
-    {
-        this.screenWidth = screenWidth;
-        this.screenHeight = screenHeight;
-    }
-
     private const float ProjectileSpeed = 500;
 
-    private readonly Player player = new();
+    private readonly Player player = new(new((Constants.ScreenWidth - Player.Size) / 2f, Constants.GroundY - Player.Size));
 
     private readonly Enemy enemy = new();
 
@@ -42,7 +32,7 @@ sealed class GameState
 
         survivalTime += deltaTime;
         GameEvents events = GameEvents.None;
-        player.Update(input.PlayerDirection, deltaTime, screenWidth, screenHeight);
+        player.Update(input.MoveDirection, input.Jump, input.JumpHeld, deltaTime);
         enemy.Update(deltaTime, survivalTime, player.Center);
 
         if (input.Shoot)
@@ -65,7 +55,7 @@ sealed class GameState
                 score++;
                 projectiles.RemoveAt(i);
             }
-            else if (projectile.IsOutside(screenWidth, screenHeight))
+            else if (projectile.IsOutside(Constants.ScreenWidth, Constants.ScreenHeight))
             {
                 projectiles.RemoveAt(i);
             }
