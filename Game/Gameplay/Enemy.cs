@@ -1,10 +1,9 @@
 using Engine.Mathematics;
 using System.Numerics;
-using Engine;
 
-namespace Game;
+namespace Game.Gameplay;
 
-class Hazard
+class Enemy
 {
     private const int Size = 30;
 

@@ -1,0 +1,13 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build Game01",
+            "type": "process",
+            "command": "dotnet",
+            "args": ["build", "${workspaceFolder}/Game01.csproj", "--configuration", "Debug"],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        }
+    ]
+}

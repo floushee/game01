@@ -1,21 +1,17 @@
-using System.Numerics;
 using Engine.Audio;
 using Engine.Input;
 using Engine.Rendering;
+using Engine.Window;
 
 namespace Engine;
 
-public interface IEngine : IInput, IRenderer, IAudio
+public interface IEngine
 {
-    void InitWindow(int width, int height, string title);
+    IWindow Window { get; }
 
-    void CloseWindow();
+    IInput Input { get; }
 
-    void SetTargetFPS(int fps);
+    IRenderer Renderer { get; }
 
-    void HideCursor();
-
-    bool WindowShouldClose();
-
-    float GetFrameTime();
+    IAudio Audio { get; }
 }

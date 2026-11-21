@@ -1,8 +1,7 @@
-using Engine;
 using Engine.Rendering;
 using Raylib_cs;
 
-namespace RaylibEngine;
+namespace RaylibEngine.Rendering;
 
 internal sealed record Texture(Texture2D Value) : ITexture
 {

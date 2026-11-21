@@ -1,7 +1,6 @@
 using System.Numerics;
-using Engine;
 
-namespace Game;
+namespace Game.Gameplay;
 
 struct Projectile
 {

@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Game01",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build Game01",
+            "program": "${workspaceFolder}/bin/Debug/net10.0/Game01.dll",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ]
+}

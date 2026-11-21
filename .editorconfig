@@ -1,0 +1,5 @@
+root = true
+
+[*.cs]
+# Fail the build when a C# file contains an unused using directive.
+dotnet_diagnostic.IDE0005.severity = error

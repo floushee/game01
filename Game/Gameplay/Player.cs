@@ -1,9 +1,7 @@
-using Engine.Input;
 using Engine.Mathematics;
 using System.Numerics;
-using Engine;
 
-namespace Game;
+namespace Game.Gameplay;
 
 class Player
 {
@@ -17,14 +15,8 @@ class Player
 
     public Rectangle Bounds => new(Position.X, Position.Y, Size, Size);
 
-    public void Update(IInput engine, float deltaTime, int screenWidth, int screenHeight)
+    public void Update(Vector2 direction, float deltaTime, int screenWidth, int screenHeight)
     {
-        Vector2 direction = Vector2.Zero;
-        if (engine.IsKeyDown(Key.D) || engine.IsKeyDown(Key.Right)) direction.X++;
-        if (engine.IsKeyDown(Key.A) || engine.IsKeyDown(Key.Left)) direction.X--;
-        if (engine.IsKeyDown(Key.S) || engine.IsKeyDown(Key.Down)) direction.Y++;
-        if (engine.IsKeyDown(Key.W) || engine.IsKeyDown(Key.Up)) direction.Y--;
-
         // Pythagoras gives the direction's length: sqrt(x² + y²).
         // Dividing by that length makes it 1, so diagonal movement isn't faster.
         // Skip a zero-length direction to avoid division by zero.
