@@ -1,14 +1,20 @@
+using Engine.Mathematics;
 using System.Numerics;
-using Raylib_cs;
+using Engine;
+
+namespace Game;
 
 class Hazard
 {
     private const int Size = 30;
+
     private const float InitialSpeed = 100;
+
     private const float Acceleration = 5;
+
     private const float MaxSpeed = 240;
 
-    public Vector2 Position { get; private set; } = new(0, 100);
+    public Vector2 Position { get; set; } = new(0, 100);
 
     public Rectangle Bounds => new(Position.X, Position.Y, Size, Size);
     
@@ -21,6 +27,4 @@ class Hazard
     }
 
     public void Reset() => Position = new Vector2(0, 100);
-
-    public void Draw() => Raylib.DrawRectangle((int)Position.X, (int)Position.Y, Size, Size, Color.Red);
 }

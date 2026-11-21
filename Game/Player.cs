@@ -1,24 +1,29 @@
+using Engine.Input;
+using Engine.Mathematics;
 using System.Numerics;
-using Raylib_cs;
+using Engine;
+
+namespace Game;
 
 class Player
 {
     public const int Size = 40;
+
     private const float Speed = 200;
-    
+
     public Vector2 Position { get; private set; } = new(380, 205);
 
     public Vector2 Center => Position + new Vector2(Size / 2f);
 
     public Rectangle Bounds => new(Position.X, Position.Y, Size, Size);
 
-    public void Update(float deltaTime, int screenWidth, int screenHeight)
+    public void Update(IInput engine, float deltaTime, int screenWidth, int screenHeight)
     {
         Vector2 direction = Vector2.Zero;
-        if (Raylib.IsKeyDown(KeyboardKey.D) || Raylib.IsKeyDown(KeyboardKey.Right)) direction.X++;
-        if (Raylib.IsKeyDown(KeyboardKey.A) || Raylib.IsKeyDown(KeyboardKey.Left)) direction.X--;
-        if (Raylib.IsKeyDown(KeyboardKey.S) || Raylib.IsKeyDown(KeyboardKey.Down)) direction.Y++;
-        if (Raylib.IsKeyDown(KeyboardKey.W) || Raylib.IsKeyDown(KeyboardKey.Up)) direction.Y--;
+        if (engine.IsKeyDown(Key.D) || engine.IsKeyDown(Key.Right)) direction.X++;
+        if (engine.IsKeyDown(Key.A) || engine.IsKeyDown(Key.Left)) direction.X--;
+        if (engine.IsKeyDown(Key.S) || engine.IsKeyDown(Key.Down)) direction.Y++;
+        if (engine.IsKeyDown(Key.W) || engine.IsKeyDown(Key.Up)) direction.Y--;
 
         // Pythagoras gives the direction's length: sqrt(x² + y²).
         // Dividing by that length makes it 1, so diagonal movement isn't faster.
@@ -34,5 +39,4 @@ class Player
 
     public void Reset() => Position = new Vector2(380, 205);
 
-    public void Draw() => Raylib.DrawRectangle((int)Position.X, (int)Position.Y, Size, Size, Color.Green);
 }

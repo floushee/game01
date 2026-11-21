@@ -1,10 +1,14 @@
 using System.Numerics;
-using Raylib_cs;
+using Engine;
+
+namespace Game;
 
 struct Projectile
 {
     public const float Radius = 5;
+
     public Vector2 Position { get; private set; }
+
     private readonly Vector2 velocity;
 
     public Projectile(Vector2 position, Vector2 velocity)
@@ -19,5 +23,4 @@ struct Projectile
         Position.X < -Radius || Position.X > width + Radius ||
         Position.Y < -Radius || Position.Y > height + Radius;
 
-    public void Draw() => Raylib.DrawCircleV(Position, Radius, Color.Blue);
 }

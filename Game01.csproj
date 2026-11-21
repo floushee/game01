@@ -13,7 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Raylib-cs" Version="8.1.0" />
+    <Compile Remove="Engine/**/*.cs;Game/**/*.cs;RaylibEngine/**/*.cs" />
+    <ProjectReference Include="Game/Game.csproj" />
+    <ProjectReference Include="RaylibEngine/RaylibEngine.csproj" />
   </ItemGroup>
 
 </Project>
