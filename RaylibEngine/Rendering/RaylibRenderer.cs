@@ -25,5 +25,10 @@ internal sealed class RaylibRenderer : IRenderer
 
     public void DrawText(string text, int x, int y, int size, Color color) => Raylib.DrawText(text, x, y, size, Convert(color));
 
-    public void DrawTexture(ITexture texture, int x, int y, Color color) => Raylib.DrawTexture(((Texture)texture).Value, x, y, Convert(color));
+    public void DrawTexture(ITexture texture, int x, int y, Color color, bool flipHorizontally = false)
+    {
+        // Raylib mirrors the source region when its width is negative.
+        var source = new Rectangle(0, 0, flipHorizontally ? -texture.Width : texture.Width, texture.Height);
+        Raylib.DrawTextureRec(((Texture)texture).Value, source, new Vector2(x, y), Convert(color));
+    }
 }

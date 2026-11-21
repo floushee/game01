@@ -91,6 +91,8 @@ sealed class GameState
 
     public IReadOnlyList<Projectile> Projectiles => projectiles;
 
+    public float SurvivalTime => survivalTime;
+
     public int Score => score;
 
     public int BestScore => bestScore;

@@ -52,7 +52,7 @@ public sealed class GameHost : IDisposable
             GameEvents events = state.Update(deltaTime, frameInput);
             if ((events & GameEvents.Shot) != 0) engine.Audio.PlaySound(resources.LaserSound);
             if ((events & GameEvents.Death) != 0) engine.Audio.PlaySound(resources.DeathSound);
-            renderer.Draw(state, resources.Crosshair, frameInput.PlayerAim);
+            renderer.Draw(state, resources, frameInput.PlayerAim);
         }
     }
 

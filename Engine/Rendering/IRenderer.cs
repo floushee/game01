@@ -20,5 +20,5 @@ public interface IRenderer
 
     void DrawText(string text, int x, int y, int size, Color color);
 
-    void DrawTexture(ITexture texture, int x, int y, Color color);
+    void DrawTexture(ITexture texture, int x, int y, Color color, bool flipHorizontally = false);
 }

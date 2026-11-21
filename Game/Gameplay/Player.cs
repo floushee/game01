@@ -16,6 +16,7 @@ class Player(Vector2 initialPosition)
 
     public float VerticalVelocity { get; private set; }
 
+    public float WalkDistance { get; private set; }
 
     public bool IsGrounded { get; private set; } = true;
 
@@ -56,6 +57,9 @@ class Player(Vector2 initialPosition)
             }
         }
 
+        // Count actual movement so holding a direction against a wall doesn't animate walking.
+        float horizontalTravel = MathF.Abs(position.X - Position.X);
+        WalkDistance = IsGrounded && horizontalTravel > 0 ? WalkDistance + horizontalTravel : 0;
         Position = position;
     }
 
@@ -63,6 +67,7 @@ class Player(Vector2 initialPosition)
     {
         Position = new Vector2((Constants.ScreenWidth - Size) / 2f, Constants.GroundY - Size);
         VerticalVelocity = 0;
+        WalkDistance = 0;
         IsGrounded = true;
     }
 }
